@@ -12,25 +12,6 @@ const expresiones = {
     address: /^[#.0-9a-zA-Z\s,-]+$/ //simple address
 }
 
-const campos = {
-    firstName: false,
-    lastName: false,
-    password: false,
-    email: false,
-    phoneNo: false
-}
-
-
-
-// Get the input fields
-var password = document.querySelector(".password");
-var phone = document.querySelector('.phone');
-var name = document.querySelector('.name');
-
-// Get the error elements
-var errorPassword = document.getElementById("errorPassword");
-var errorName = document.getElementById('errorName');
-var errorPhone = document.getElementById('errorPhone');
 
 // Exercise 8
 

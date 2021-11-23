@@ -89,8 +89,22 @@ function buy(id) {
 }
 
 // Exercise 2
+//Eliminar todos  elemento desde el índice 0
 function cleanCart() {
-    cartList.splice(0,cartList.length);
+    //Limpiamos los elementos
+    cartList.splice(0);
+    
+    //Limpiamos los subtotales
+     for (let key in subtotal){
+      subtotal[key].value = 0;
+      subtotal[key].discount = 0;
+     }
+    
+
+    //Limpiamos el total
+    total = 0;
+
+
 }
 
 // Exercise 3
@@ -180,7 +194,10 @@ function addToCart(id) {
 }
 
 function calculateSubtotals() {
+    //Limpiamos variables
+    cleanCart();
     // 1. Create a for loop on the "cart" array 
+    //Recalculamos los subtotales
     for(let itemCart in cart){
         subtotal[cart[itemCart].type].value +=cart[itemCart].quantity * cart[itemCart].price;
     }
