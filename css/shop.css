@@ -24,3 +24,19 @@ body{
     right: 0;
     margin-right: 1rem;
 }
+/* Revisar esto no me funciona */
+.table__elemento  img {
+    object-fit:contain;
+    border-radius: 6px;
+    border:2px;
+}
+
+.alertAdd,
+.alertDel{
+    z-index: 100;
+}
+
+.hide{
+    display:none;
+}
+
