@@ -93,18 +93,19 @@ function buy(id) {
 // Exercise 2
 function cleanCart() {
     cartList.splice(0);
+
+    //Limpiamos los subtotales
+    for (let key in subtotal) {
+        subtotal[key].value = 0;
+        subtotal[key].discount = 0;
+    }
+
+
+    //Limpiamos el total
+    total = 0;
 }
-//Limpiamos los subtotales
-for (let key in subtotal){
-    subtotal[key].value = 0;
-    subtotal[key].discount = 0;
-   }
 
-
-  //Limpiamos el total
-  total = 0;
-
-// Exercise 3
+// Exercise 3 deprecat
 function calculateSubtotals_v1() {
     // 1. Create a for loop on the "cartList" array 
     for (let i in cartList) {
@@ -113,18 +114,16 @@ function calculateSubtotals_v1() {
     // 2. Implement inside the loop an if...else or switch...case to add the quantities of each type of product, obtaining the subtotals: subtotalGrocery, subtotalBeauty and subtotalClothes
 }
 
-// Exercise 4
+// Exercise 4 Deprecat
 function calculateTotal() {
     // Calculate total price of the cart either using the "cartList" array
     for (let key in subtotal) {
         total += subtotal[key].value;
     }
 
-    applyPromotionsCart();
 }
 
-// Exercise 5
-
+// Exercise 5 deprecat
 function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     for (let elementCart in cartList) {
@@ -148,14 +147,19 @@ function generateCart() {
 
 // Exercise 6
 function applyPromotionsCart() {
+   /* console.log("applyPromotionsCart()");*/
     // Apply promotions to each item in the array "cart"
     for (let elementCart in cart) {
+        flagPromotion = false;
         if (cart[elementCart].quantity >= 3 && cart[elementCart].type === "grocery" && cart[elementCart].name === "cooking oil") {
             cart[elementCart].subtotalWithDiscount = cart[elementCart].quantity * 10;
+            flagPromotion = true;
+        } else if (cart[elementCart].quantity >= 10 && cart[elementCart].type === "grocery" && cart[elementCart].name === "Instant cupcake mixture") {
+            cart[elementCart].subtotalWithDiscount = `${roundToTwo(cart[elementCart].quantity * (2 / 3) * cart[elementCart].price)}` * 1;
+            flagPromotion = true;
         }
-        if (cart[elementCart].quantity >= 10 && cart[elementCart].type === "grocery" && cart[elementCart].name === "Instant cupcake mixture") {
-            cart[elementCart].subtotalWithDiscount = cart[elementCart].quantity * (2 / 3) * cart[elementCart].price;
-        }
+        if (!flagPromotion)
+            cart[elementCart].subtotalWithDiscount = cart[elementCart].subtotal;
     }
 
 }
@@ -171,11 +175,15 @@ subtotalWithDiscount:valor6,
 type:valor7}*/
 
 // Exercise 7
-function addToCart(id) {
+//Funcion que añade un elemento del id indicado.
+//Al ser un nuevo elemento  el descuento es 0
+//Al ser un nuevo elemento que ya existe en el carrito , se aumenta en 1 y el subtotal se aumenta en 1 vez el precio.
 
+function addToCart(id) {
+   /* console.log("addToCart():" + id);*/
     const alert = document.querySelector('.alertAdd');
     alert.classList.remove('hide');
-    setTimeout(function () { alert.classList.add('hide') }, 2000);
+    setTimeout(function () { alert.classList.add('hide') }, 500);
 
 
     // Refactor previous code in order to simplify it 
@@ -189,52 +197,61 @@ function addToCart(id) {
                 let newElement = products[itemProduct];
                 newElement["quantity"] = 1;
                 newElement["subtotal"] = products[itemProduct].price;
-                newElement["subtotalWithDiscount"] = 0;
+                newElement["subtotalWithDiscount"] = products[itemProduct].price;
                 newElement["img"] = "";
                 cart.push(newElement);
+
+                //Agrego el link de la imagen en caso de que el item sea nuevo para el carro de la compra y lo pinto nuevamente
+                addLinkImgCart(id);
+
+                //Renderizamos todos los elementos de la variable cart en el modal del carro de la compra
+                printCart();
             }
             else {
                 objectReferenced.quantity++;
                 objectReferenced.subtotal += products[itemProduct].price;
+                //El elemento ya existe en el carrito solo renderizo el campo quantity
+                renderQuantityCart(objectReferenced.name, objectReferenced.quantity);
                 flagImg = true;
             }
             break;
         }
     }
-    // 2. Add found product to the cart array or update its quantity in case it has been added previously.
-    //Agrego el link de la imagen en caso de que el item sea nuevo para el carro de la compra y lo pinto nuevamente
-    if (!flagImg) {
-        addLinkImgCart(id);
-        //Renderizamos todos los elementos de la variable cart en el modal del carro de la compra
-        printCart();
-    }
-    else //Si elemento ya existe en el carrito solo renderizo el campo quantity
-    {
-        renderQuantityCart(objectReferenced.name, objectReferenced.quantity);
-    }
 
-    totalCarrito();
+    //Recalcula los subtotales
     calculateSubtotals();
+
+    //Printea los totales 
+    totalCarrito();
 
 }
 
 function calculateSubtotals() {
-     //Limpiamos variables
-     cleanCart();
+    /*console.log("calculateSubtotals()");*/
+    //Limpiamos variables
+    cleanCart();
+
+
+
+    // 2. Implement inside the loop an if...else or switch...case to add the quantities of each type of product, obtaining the subtotals: subtotalGrocery, subtotalBeauty and subtotalClothes
+
+    applyPromotionsCart();
 
     // 1. Create a for loop on the "cart" array 
     //Recalculamos los subtotales
+
     for (let itemCart in cart) {
         subtotal[cart[itemCart].type].value += cart[itemCart].quantity * cart[itemCart].price;
+        subtotal[cart[itemCart].type].discount = subtotal[cart[itemCart].type].discount + (cart[itemCart].subtotal - cart[itemCart].subtotalWithDiscount);
     }
-    // 2. Implement inside the loop an if...else or switch...case to add the quantities of each type of product, obtaining the subtotals: subtotalGrocery, subtotalBeauty and subtotalClothes
-    calculateTotal();
+
 }
 
 
 
-// Exercise 9
+// Exercise 9 Deprecated
 function removeFromCart(id) {
+  /*  console.log("removeFromCart()");*/
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array 
     const index = cart.findIndex((element) => element.id === id);
@@ -305,7 +322,7 @@ function printCart() {
             <td class="table__title"> <h6 >${item.name}</h6></td>
             <td class="table__price"> <p>${item.price}</p> </td>
             <td class="table__quantity d-flex ">
-            <input type="number" min="1" value=${item.quantity} class="input-element border-0">
+            <input type="number" min="1" value=${item.quantity} class="input-element border-0" >
             <button class="delete btn btn-danger">x</button>
             </td>`;
 
@@ -337,16 +354,35 @@ function renderQuantityCart(title__product, quantity__product) {
 
 //Recorro el arreglo cart, calculo del total del carrito y lo renderizo
 function totalCarrito() {
-    let total = 0;
-    const itemCartTotal = document.querySelector('.itemCartTotal');
+    /*console.log("totalCarrito()");*/
+    let totalFinal = 0;
+    let totalWithDiscount = 0;
+
+    const itemCartTotalV = document.querySelector('.itemCartTotal');
+    const totalWithDiscountV = document.querySelector('.totalWithDiscount');
+
+
     cart.forEach((item) => {
-        const precio = item.price;
-        total = total + item.quantity * precio;
+        totalFinal = totalFinal + item.quantity * item.price;
+        totalWithDiscount = totalWithDiscount + item.subtotalWithDiscount;
     });
 
-    itemCartTotal.innerHTML = `Total $${roundToTwo(total)}`
+
+    itemCartTotalV.innerHTML = `$${roundToTwo(totalFinal)}`
+    totalWithDiscountV.innerHTML = `$${roundToTwo(totalWithDiscount)}`
+
+
+    let discount = 0;
+    const onlyDiscountV = document.querySelector('.onlyDiscount');
+
+    discount = totalFinal - totalWithDiscount;
+    onlyDiscountV.innerHTML = `$${roundToTwo(discount)}`
+
+
+
+
     //Cada vez que renderizamos parte o todo el modal recalculamos el total del cart
-    //Por lo que este cart es lo que almacenamos en el storage.
+    //Por lo que este cart es lo que almacenamos en el storage
     addItemLocalStorage();
 }
 
@@ -354,11 +390,12 @@ function totalCarrito() {
 //Al dar click sobre "X" se lanza el evento de eliminar.
 //Busco su elemento padre mas cercano, ya que necesitaré eliminar su HTML
 function removeItemCarrito(e) {
+ /*   console.log("removeItemCarrito");*/
 
     const alert = document.querySelector('.alertDel');
     alert.innerHTML = "Producto eliminado del carrito";
     alert.classList.remove('hide');
-    setTimeout(function () { alert.classList.add('hide') }, 2000);
+    setTimeout(function () { alert.classList.add('hide') }, 1000);
 
 
     const buttonDelete = e.target;
@@ -376,6 +413,7 @@ function removeItemCarrito(e) {
 
     //Elimino del modal el elemento 
     tr.remove();
+    calculateSubtotals();
     //Renderizo el total del carrito
     totalCarrito();
 }
@@ -387,17 +425,20 @@ function roundToTwo(num) {
 
 
 //En el carrito suma, resta , valores no permitidos <0 > 5000 items
-//recibe el evento de cambio del numero de items
+//recibe el evento de cambio del numero de items directamente desde el input
 function addDeductItems(e) {
+  /*  console.log("addDeductItems");*/
     const buttonChange = e.target;
     const tr = buttonChange.closest('.itemCart');
     const titleChange = tr.querySelector('.table__title > h6').textContent;
     cart.forEach((item) => {
         if (item.name == titleChange) {
             (buttonChange.value < 1 || buttonChange.value > 2000) ? buttonChange.value = 1 : buttonChange.value;
-            item.quantity = buttonChange.value;
+            item.quantity = buttonChange.value * 1;
         }
+        item.subtotal = item.price * item.quantity;
     });
+    calculateSubtotals();
     totalCarrito();
 }
 
@@ -414,7 +455,7 @@ window.onload = function () {
     if (storage) {
         cart = storage;
         printCart();
+        calculateSubtotals();
         totalCarrito();
     }
 }
-

@@ -40,7 +40,7 @@
     </div>
   </nav>
 
-  <div class="alertAdd container-fluid position-sticky top-0 alert-primary hide" role="alert">
+  <div class="alertAdd container-fluid top-0 alert-primary  hide" role="alert">
     Producto añadido al carrito
   </div>
 
@@ -168,7 +168,7 @@
         
           </div>
            
-          <div class="modal-body table-responsive">
+          <div class="modal-body table-responsive mb-1">
             <!-- listing items starts -->
             <table class="table table-hover">
                 <thead>
@@ -180,26 +180,32 @@
                     <th scope="col">Quantity</th>
                   </tr>
                 </thead>
+                <!-- Esta etiqueta no se puede borrar es para rencderizar los elementos del carrito -->
                 <tbody>
  
                 </tbody>
             </table>
-
-            <div class="row mx-0 align-items-center ">
-                <div class="col ">
-                  <h3 class="itemCartTotal"> Total: 0</h3>
-                </div>
-                <div class="col d-flex justify-content-end"> 
-                  <a href="checkout.html" class="btn btn-primary m-3 text-end">Checkout</a>
-                </div>
-              </div>
-              
-            <!-- listing items ends -->
           </div>
+          <h6 class="text-muted text-center border bg-light mb-0">Totales del Carro</h6>
+          <div class="row mx-0 align-items-center ">
+            <table class="table totalAccount mb-0">
+              <tbody>
+                <tr class= "text-primary">
+                  <td data-label="Partial total" scope="col" class="py-1 itemCartTotal">A</td>
+                  <td data-label="Discount" scope="col" class="py-1 onlyDiscount">BB</td>
+                  <td data-label="Total" scope="col" class="py-1 totalWithDiscount">CC</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+       
+          <div class="text-center w-100"> 
+            <a href="checkout.html" class="btn btn-primary m-3 text-end">FINALIZAR COMPRA</a>
+          </div> 
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
-        </div>
+
       </div>
     </div>
   </aside>

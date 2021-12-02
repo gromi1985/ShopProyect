@@ -40,3 +40,26 @@ body{
     display:none;
 }
 
+.totalAccount,
+.totalAccount>tbody,
+.totalAccount tr,
+.totalAccount td{
+    display: block;
+    width: 100%;
+}
+
+.totalAccount td{
+    text-align: right;
+    padding-left: 50%;
+    padding-right:10%;
+    position: relative;
+
+}
+
+.totalAccount td::before{
+    position:absolute;
+    left:10%;
+    content:attr(data-label);
+    color:black;
+}
+
