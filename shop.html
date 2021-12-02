@@ -31,12 +31,18 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link text-white btn" id="cart" type="button" data-toggle="modal"
-            data-target="#cartModal" onclick="cart()" href="#beauty"><i class="fas fa-cart-arrow-down"></i>
+            data-target="#cartModal" href="#beauty"><i class="fas fa-cart-arrow-down"></i>
+            <!-- data-target="#cartModal" onclick="cart()" href="#beauty"><i class="fas fa-cart-arrow-down"></i> -->
+
             My Cart</a>
         </li>
       </ul>
     </div>
   </nav>
+
+  <div class="alertAdd container-fluid top-0 alert-primary  hide" role="alert">
+    Producto añadido al carrito
+  </div>
 
   <h1 class="text-center mt-3 m-5">Welcome to the ShopNow</h1>
 
@@ -50,7 +56,7 @@
         <div class="card-body text-center">
           <h5 class="card-title">cooking oil</h5>
           <h1 class="card-text">$10.5</h1>
-          <button type="button" onclick="buy(1)" class="btn btn-primary">Add to cart</button>
+          <button type="button" onclick="addToCart(1)" class="btn btn-primary">Add to cart</button>
         </div>
       </div>
 
@@ -59,7 +65,7 @@
         <div class="card-body text-center">
           <h5 class="card-title">Pasta</h5>
           <h1 class="card-text">$6.25</h1>
-          <button type="button" onclick="buy(2)" class="btn btn-primary">Add to cart</button>
+          <button type="button" onclick="addToCart(2)" class="btn btn-primary">Add to cart</button>
         </div>
       </div>
 
@@ -68,7 +74,7 @@
         <div class="card-body text-center">
           <h5 class="card-title">Instant cupcake mixture</h5>
           <h1 class="card-text">$5</h1>
-          <button type="button" onclick="buy(3)" class="btn btn-primary">Add to cart</button>
+          <button type="button" onclick="addToCart(3)" class="btn btn-primary">Add to cart</button>
         </div>
       </div>
     </div>
@@ -82,18 +88,18 @@
       <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
         <img src="./images/product.svg" class="grocery-img">
         <div class="card-body text-center">
-          <h5 class="card-title">All-in-1</h5>
+          <h5 class="card-title">All-in-one</h5>
           <h1 class="card-text">$260</h1>
-          <button type="button" onclick="buy(4)" class="btn btn-primary">Add to cart</button>
+          <button type="button" onclick="addToCart(4)" class="btn btn-primary">Add to cart</button>
         </div>
       </div>
 
       <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
         <img src="./images/product.svg" class="grocery-img">
         <div class="card-body text-center">
-          <h5 class="card-title">Zero makeup kit</h5>
+          <h5 class="card-title">Zero Make-up Kit</h5>
           <h1 class="card-text">$20.5</h1>
-          <button type="button" onclick="buy(5)" class="btn btn-primary">Add to cart</button>
+          <button type="button" onclick="addToCart(5)" class="btn btn-primary">Add to cart</button>
         </div>
       </div>
 
@@ -102,7 +108,7 @@
         <div class="card-body text-center">
           <h5 class="card-title">Lip tints</h5>
           <h1 class="card-text">$12.75</h1>
-          <button type="button" onclick="buy(6)" class="btn btn-primary">Add to cart</button>
+          <button type="button" onclick="addToCart(6)" class="btn btn-primary">Add to cart</button>
         </div>
       </div>
     </div>
@@ -118,7 +124,7 @@
         <div class="card-body text-center">
           <h5 class="card-title">Lawn dress</h5>
           <h1 class="card-text">$15</h1>
-          <button type="button" onclick="buy(7)" class="btn btn-primary">Add to cart</button>
+          <button type="button" onclick="addToCart(7)" class="btn btn-primary">Add to cart</button>
         </div>
       </div>
 
@@ -127,7 +133,7 @@
         <div class="card-body text-center">
           <h5 class="card-title">Lawn-chiffon combo</h5>
           <h1 class="card-text">$19.99</h1>
-          <button type="button" onclick="buy(8)" class="btn btn-primary">Add to cart</button>
+          <button type="button" onclick="addToCart(8)" class="btn btn-primary">Add to cart</button>
         </div>
       </div>
 
@@ -136,7 +142,7 @@
         <div class="card-body text-center">
           <h5 class="card-title">Toddler Frock</h5>
           <h1 class="card-text">$9.99</h1>
-          <button type="button" onclick="buy(9)" class="btn btn-primary">Add to cart</button>
+          <button type="button" onclick="addToCart(9)" class="btn btn-primary">Add to cart</button>
         </div>
       </div>
       
@@ -149,31 +155,57 @@
       aria-labelledby="cartModalTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="cartModalScrollableTitle"><i class="fas fa-cart-arrow-down"></i>My Cart</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <!-- listing items starts -->
-            <div>
-              <ul class="list">
-
-              </ul>
-              <div>
-                <h3 class="text-center bill px-5">Select Something</h3>
-              </div>
-              <div class="text-center"> 
-                <a href="checkout.html" class="btn btn-primary m-3">Checkout</a>
-              </div>
+          <div class="modal-header flex-column pb-0 px-0 border-bottom-0">
+            <div class="d-flex w-100 px-3 ">
+             <h5 class="modal-title " id="cartModalScrollableTitle"><i class="fas fa-cart-arrow-down"></i>My Cart</h5>            
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+             </button>
             </div>
-            <!-- listing items ends -->
+           <div class="alertDel container-fluid position-sticky top-0 alert-primary lh-1 py-0 mb-0 hide" role="alert">
+             Producto añadido al carrito
+           </div>
+        
           </div>
+           
+          <div class="modal-body table-responsive mb-1">
+            <!-- listing items starts -->
+            <table class="table table-hover">
+                <thead>
+                  <tr class= "text-primary">
+                    <th scope="col"> #</th>
+                    <th scope="col">Product</th>
+                    <th scope="col"></th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                  </tr>
+                </thead>
+                <!-- Esta etiqueta no se puede borrar es para rencderizar los elementos del carrito -->
+                <tbody>
+ 
+                </tbody>
+            </table>
+          </div>
+          <h6 class="text-muted text-center border bg-light mb-0">Totales del Carro</h6>
+          <div class="row mx-0 align-items-center ">
+            <table class="table totalAccount mb-0">
+              <tbody>
+                <tr class= "text-primary">
+                  <td data-label="Partial total" scope="col" class="py-1 itemCartTotal">A</td>
+                  <td data-label="Discount" scope="col" class="py-1 onlyDiscount">BB</td>
+                  <td data-label="Total" scope="col" class="py-1 totalWithDiscount">CC</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+       
+          <div class="text-center w-100"> 
+            <a href="checkout.html" class="btn btn-primary m-3 text-end">FINALIZAR COMPRA</a>
+          </div> 
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
-        </div>
+
       </div>
     </div>
   </aside>
