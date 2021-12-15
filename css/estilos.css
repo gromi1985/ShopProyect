@@ -1,0 +1,400 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Oswald:wght@600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+* {
+  font-family: "Oswald", Helvetica, Arial, Lucida, sans-serif;
+}
+
+header{
+  width: 100vw;
+  
+}
+
+/* .custom-gradient {
+  background: linear-gradient(rgba(229, 232, 240, 0.75), rgba(5, 7, 12, 0.75));
+} */
+
+.custom-properties {
+  height: 9vh;
+  background: linear-gradient(rgba(229, 232, 240, 0.75), rgba(5, 7, 12, 0.75));
+}
+
+.w-70 {
+  width: 70%;
+}
+
+.navbar-brand-custom {
+  font-size: 1rem;
+  font-weight: 700;
+}
+.navbar-custom {
+  background: linear-gradient(rgba(229, 232, 240, 0.75), rgba(5, 7, 12, 0.75));
+  height: calc(50px + 1rem);
+}
+/* ====================================================================================================== */
+@media (max-width: 992px) {
+  .navbar-expand-lg .navbar-toggler-custom {
+    order: -1;
+  }
+
+  section.level-2 .title-center {
+    font-size: 60px;
+  }
+
+  /* Shop Perfection */
+  .blq-poligono .blq-title {
+    font-size: 20px;
+  }
+
+  div .navbar-brand-sub {
+    font-size: 0.6rem;
+  }
+
+  section .header-content .title-center-btn,
+  .blq-poligono .title-center-btn {
+    display: inline-block;
+  }
+  .blq-poligono > div {
+    padding-top: 80px;
+  }
+}
+
+/* ====================================================================================================== */
+@media (max-width: 767px) {
+  /* Shop Perfection */
+  section.level-2 .title-center {
+    font-size: 40px;
+  }
+  .blq-poligono .blq-title {
+    /* font-size: 20px;  */
+    line-height: 30px;
+  }
+  .blq-poligono {
+    /* height: 100vh; */
+    clip-path: polygon(0 0, 50% 10%, 100% 0, 100% 90%, 50% 100%, 0 90%);
+    /* padding-top: 10%; */
+  }
+}
+/* ====================================================================================================== */
+@media (min-width: 768px) {
+
+  section.level-2 .title-center-sub,
+  .blq-poligono .blq-text-aux {
+    width: 597px;
+  }
+
+  /* .blq-poligono {
+    height: 70vh;
+  } */
+  .blq-poligono {
+    /* height: 80vh; */
+    clip-path: polygon(0 0, 50% 15%, 100% 0, 100% 85%, 50% 100%, 0 85%);
+    /* padding-top: 15%; */
+  }
+}
+/* ====================================================================================================== */
+
+/* ====================================================================================================== */
+
+@media (min-width: 993px) {
+  .shopping-bag {
+    order: 10;
+  }
+
+  section .header-content {
+    padding: 10px;
+  }
+  /* Shop Perfection */
+  section.level-2 .title-center {
+    font-size: 80px;
+  }
+
+  .blq-poligono > div {
+    padding-top: 50px;
+  }
+}
+
+/* ====================================================================================================== */
+
+.blq-poligono .blq-text-down {
+  font-size: 0.7rem;
+  font-weight: 100;
+}
+
+/* Shop Perfection */
+section.level-2 .title-center {
+  line-height: 60px;
+}
+
+/* Shop Perfection */
+/* ITS THING REEL */
+section.level-2 .title-center,
+.blq-poligono > div > .blq-title {
+  text-transform: uppercase;
+  margin-top: 4rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+/* ITS THING REEL */
+.blq-poligono > div > .blq-title {
+  padding-bottom: 0px;
+  font-size: 15px;
+}
+
+section .header-content-container,
+.blq-poligono .blq-center-part-2 {
+  width: 80%;
+  margin: 20px auto;
+}
+
+section .header-content span.title-center-sub,
+.blq-text-aux .blq-notes {
+  font-size: 20px;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.9em;
+  text-align: center;
+}
+
+section.level-2 .header-content-container .header-content .title-center-btn,
+.blq-poligono .title-center-btn {
+  padding: 0.3em;
+  color: #ffffff;
+  border-width: 10px;
+  border-color: #dca57d;
+  border-radius: 0px;
+  letter-spacing: 3px;
+  font-size: 15px;
+  font-family: "Oswald", Helvetica, Arial, Lucida, sans-serif !important;
+  text-transform: uppercase;
+  background-color: #dca57d;
+  margin-top: 20px;
+  font-weight: 500;
+  line-height: 1.7em;
+  text-decoration: none;
+  text-align: center;
+  width: 180px;
+  height: 60px;
+}
+
+/* El boton del menu hamburguesa */
+.navbar-toggler-custom {
+  position: relative;
+}
+
+/* El bloque del menu desplegable al dar click sobre el menu hamburguesa */
+.collapse.show {
+  background-color: #1d2528;
+  position: absolute;
+  box-shadow: 2px 0 5px 2px rgb(66, 66, 66);
+  width: 100%;
+  height: 45vh;
+  top: 100%;
+  left: 0;
+  transition: all 0.5s case;
+}
+.collapse.show .navbar-nav {
+  padding: 50px 0px 50px 0px;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+}
+
+.collapse.show .navbar-nav .nav-item {
+  font-size: 1rem;
+  padding: 0.7rem 50px;
+  background-color: rgba(0, 0, 0, 0.03);
+  font-weight: 600;
+  line-height: 23px;
+  text-align: left;
+}
+
+.collapse .navbar-nav .nav-item .nav-link {
+  color: #ffffff;
+}
+
+.collapse .navbar-nav .nav-item .nav-link:hover {
+  opacity: 0.7;
+  color: #ef8354;
+}
+
+.collapse:not(.show) .navbar-nav .nav-item {
+  flex-grow: 1;
+  background-color: rgba(0, 0, 0, 0.03);
+  opacity: 0.7;
+  line-height: 23px;
+  font-weight: 400;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.collapse.show .navbar-nav .nav-item:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+  opacity: 0.7;
+}
+
+.collapse-custom.collapse:not(.show) {
+  color: rgba(0, 0, 0, 0.9);
+  width: 50%;
+  flex-grow: 0;
+}
+
+.collapse .navbar-nav {
+  width: 100%;
+  justify-content: space-around;
+}
+
+.level-2 {
+  /* position: absolute; */
+  width: 100%;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.4);
+  background-image: url("../img/christmas-2918569__340.jpg");
+  background-repeat: no-repeat; 
+  background-size: cover;
+  background-position: top center;
+  background-attachment: fixed; 
+  padding-top:calc(50px + 1rem);
+}
+
+.level-2 > div:first-child {
+  margin-top: 5.5rem;
+}
+
+
+.blq-poligono {
+  width: 100%;
+  height: 90vh;
+  background: rgba(0, 2, 0, 0.5);
+  padding-top: 18%;
+}
+
+.blq-poligono > div {
+  padding-top: 50px;
+}
+
+/* Imagenes */
+.blq-images>div{
+  margin-top:20px;
+
+}
+
+/* ========================================================== */
+/*IMAGENES  */
+/* ========================================================== */
+
+.blq-imagenes{
+  margin:20px 15px;
+}
+.img-area{
+  gap:20px;
+}
+
+.blq-imagenes>.blq-title-imagenes{
+  font-size:2rem;
+  text-align: center;
+}
+.single-img>a>img{
+width:100%;
+height: 100%;
+}
+
+
+
+.single-img{
+  position:relative;
+}
+.seleccion-item-text{
+  position:absolute;
+  bottom:20px;
+  left:20px; 
+  color:white;
+  font-family: 'Courgette', cursive;
+  font-size:3rem;
+}
+
+@media (max-width: 768px) {
+
+  .single-img{
+    width: 80%;
+  }
+  .img-area{
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 768px) {
+  .single-img{
+    width: 32%;
+    height: 100%;
+  }
+
+  .img-area{
+    flex-wrap: nowrap;
+  }
+}
+
+
+/* ========================================================== */
+/* FOOTER */
+/* ========================================================== */
+
+footer{
+  width: 100%;
+  background:black;
+  min-height: 100px;
+  padding:20px 50px;
+
+}
+footer>*{
+  font-family:'Poppins',sans-serif;
+}
+
+footer>ul.social_icon{
+margin:10px 0;  
+}
+
+footer>ul.social_icon>li,
+.menu>li{
+  list-style: none;
+}
+
+footer>ul.social_icon>li a{
+font-size: 2em;
+color:#fff;
+margin:0 10px;
+display:inline-block;
+transition: .5s;
+}
+
+footer .social_icon li a:hover{
+  transform:translateY(-10px);
+}
+
+footer>.menu>li>a{
+  font-size: 1.2em;
+  color:#fff;
+  margin:0 10px;
+  display:inline-block;
+  transition: .5s;
+  text-decoration:none;
+  font-weight: 100;
+  opacity: 0.75;
+  }
+
+  footer>.menu>li>a:hover{
+    opacity:1;
+  }
+
+  footer>p{
+    text-align: center;
+    margin-top:15px;
+    margin-bottom: 10px;
+    font-size:1.1em;
+    padding-left:2rem;
+  }

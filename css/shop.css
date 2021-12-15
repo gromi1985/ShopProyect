@@ -15,8 +15,7 @@ body{
     color: white;
 }
 .grocery-img{
-    width: 60%;
-    margin: 1rem auto;
+    width: 100%;
 }
 
 .price{
@@ -63,3 +62,30 @@ body{
     color:black;
 }
 
+
+div.card{
+    background: url(../img/background.jpeg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#clothes,
+#beauty,
+#grocery{
+    gap:20px;
+}
+
+.mix-field-b,
+.mix-field-h{
+    width: 80px;
+
+}
+
+
+
+
+td>h6,
+td>p{
+    margin-top:0;
+    margin-bottom:0;
+}

@@ -317,12 +317,12 @@ function printCart() {
         tr.classList.add('itemCart');
 
         const content = `
-            <th scope="row" >1</th>
-            <td><img src="./images/product.svg" class="grocery-img"></td>
+            <td >1</td>
+            <td><img src="${item.img}" class="grocery-img"></td>
             <td class="table__title"> <h6 >${item.name}</h6></td>
             <td class="table__price"> <p>${item.price}</p> </td>
-            <td class="table__quantity d-flex ">
-            <input type="number" min="1" value=${item.quantity} class="input-element border-0" >
+            <td class="table__quantity d-flex">
+            <input type="number" min="1" maxlength="7"  value=${item.quantity} class="input-element border-0 mix-field-b" >
             <button class="delete btn btn-danger">x</button>
             </td>`;
 
